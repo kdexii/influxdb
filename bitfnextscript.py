@@ -7,7 +7,7 @@ from tqdm import tqdm
 
 influxURL = 'http://localhost:8086'
 serverURL = 'https://api-pub.bitfinex.com/v2'
-dbName = 'test8'
+dbName = 'mydatabase'
 
 """
     @getTickerInfoAll - getting information about tickets
