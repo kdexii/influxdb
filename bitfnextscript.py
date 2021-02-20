@@ -15,7 +15,6 @@ dbName = 'test8'
 """
 def getTickerInfoAll():
     req = requests.get('https://api-pub.bitfinex.com/v2/tickers?symbols=ALL')
-    print('Sending get request to ' + 'https://api-pub.bitfinex.com/v2/tickers?symbols=ALL')
     return req
 """
     @createQuery - create database
@@ -38,19 +37,18 @@ class parseAndWrite :
     def httpWrite(self, payload):
         influxWriteURL = influxURL + '/write?' + 'db=' + dbName + '&precision=s'
         req = requests.post(influxWriteURL, headers=headers, data=payload)
-        print('Sending write request to ' + influxWriteURL)
         return req
     """
     @httpWrite - parsing
     
     """
     def fuckingParse(self, fuckingLists):
-        InlineQuery = ''
+        line = ''
         for fuckingList in fuckingLists:
             if(fuckingList[0][0] == 't'):
                 symbol, bid, bidSize, ask, askSize, dailyChange, dailyChangeRelative, lastPrice, volume, high, low = fuckingList
                 InlineQuery += f'{dbName},pair={symbol} bid={bid},bid_size={bidSize},ask={ask},ask_size={askSize},daily_change={dailyChange},daily_change_rel={dailyChangeRelative},last_price={lastPrice},volume={volume},high={high},low={low}\n'
-        return InlineQuery
+        return line
 while True:
     """
     @httpWrite - function calls
