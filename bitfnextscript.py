@@ -4,7 +4,7 @@ from datetime import datetime, timezone
 import sched, time
 import time
 from tqdm import tqdm
-
+from influxdb import InfluxDBClient
 influxURL = 'http://localhost:8086'
 serverURL = 'https://api-pub.bitfinex.com/v2'
 dbName = 'mydatabase'
@@ -21,7 +21,7 @@ def getTickerInfoAll():
     
 """
 def createQuery():
-    from influxdb import InfluxDBClient
+
     client = InfluxDBClient(host='localhost', port=8086)
     client.create_database(dbName)
 headers = {
