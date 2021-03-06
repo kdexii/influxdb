@@ -7,7 +7,7 @@ from tqdm import tqdm
 from influxdb import InfluxDBClient
 influxURL = 'http://localhost:8086'
 serverURL = 'https://api-pub.bitfinex.com/v2'
-dbName = 'mydatabase'
+dbName = 'clowndb'
 
 """
     @getTickerInfoAll - getting information about tickets
@@ -47,7 +47,7 @@ class parseAndWrite :
         for fuckingList in fuckingLists:
             if(fuckingList[0][0] == 't'):
                 symbol, bid, bidSize, ask, askSize, dailyChange, dailyChangeRelative, lastPrice, volume, high, low = fuckingList
-                InlineQuery += f'{dbName},pair={symbol} bid={bid},bid_size={bidSize},ask={ask},ask_size={askSize},daily_change={dailyChange},daily_change_rel={dailyChangeRelative},last_price={lastPrice},volume={volume},high={high},low={low}\n'
+                line += f'{dbName},pair={symbol} bid={bid},bid_size={bidSize},ask={ask},ask_size={askSize},daily_change={dailyChange},daily_change_rel={dailyChangeRelative},last_price={lastPrice},volume={volume},high={high},low={low}\n'
         return line
 while True:
     """
